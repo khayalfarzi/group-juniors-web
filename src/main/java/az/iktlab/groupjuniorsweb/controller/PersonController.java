@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/people")
 public class PersonController {
 
     private final List<Person> people = new ArrayList<>();
@@ -25,23 +25,23 @@ public class PersonController {
                 .findAny().orElseThrow(() -> new UserNotFoundException("Not found" + id));
     }
 
-    @PostMapping("/add")
-    public void add(@RequestBody Person person) {
+    @PostMapping("/")
+    public void addPerson(@RequestBody Person person) {
         people.add(person);
     }
 
-    @PutMapping("/put")
-    public void put(@RequestBody Person person) {
-        people.set(people.indexOf(person), person);
+    @PutMapping("/{id}")
+    public void putPerson(@PathVariable Long id,@RequestBody Person person) {
+        people.set(people.indexOf(getById(id)), person);
     }
 
-    @PatchMapping("/patch")
-    public void patch(@RequestBody Person person) {
-        people.set(people.indexOf(person), person);
+    @PatchMapping("/{id}")
+    public void patchPerson(@PathVariable Long id, @RequestBody Person person) {
+        people.set(people.indexOf(getById(id)), person);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void deletePerson(@PathVariable Long id) {
         Person person = getById(id);
         people.remove(person);
     }
