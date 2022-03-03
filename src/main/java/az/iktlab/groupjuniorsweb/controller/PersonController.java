@@ -1,5 +1,6 @@
 package az.iktlab.groupjuniorsweb.controller;
 
+import az.iktlab.groupjuniorsweb.exception.UserNotFoundException;
 import az.iktlab.groupjuniorsweb.model.Person;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,18 +14,15 @@ public class PersonController {
 
     private final List<Person> people = new ArrayList<>();
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public List<Person> getAll() {
         return people;
     }
 
     @GetMapping("/{id}")
     public Person getById(@PathVariable Long id) {
-        for (Person person : people) {
-            if (Objects.equals(person.getId(), id))
-                return person;
-        }
-        return null;
+        return people.stream().filter(person -> Objects.equals(person.getId(), id))
+                .findAny().orElseThrow(() -> new UserNotFoundException("Not found" + id));
     }
 
     @PostMapping("/add")
@@ -32,5 +30,19 @@ public class PersonController {
         people.add(person);
     }
 
-    // write put patch and delete methods
+    @PutMapping("/put")
+    public void put(@RequestBody Person person) {
+        people.set(people.indexOf(person), person);
+    }
+
+    @PatchMapping("/patch")
+    public void patch(@RequestBody Person person) {
+        people.set(people.indexOf(person), person);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        Person person = getById(id);
+        people.remove(person);
+    }
 }
