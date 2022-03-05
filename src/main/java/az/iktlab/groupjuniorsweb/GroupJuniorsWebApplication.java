@@ -11,7 +11,6 @@ public class GroupJuniorsWebApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(GroupJuniorsWebApplication.class, args);
-
     }
 
     @PostConstruct
