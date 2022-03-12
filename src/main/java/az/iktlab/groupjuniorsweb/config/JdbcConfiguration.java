@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class JdbcConfiguration {
 
     @Bean
-    @Scope(value = "request")
+//    @Scope(value = "request")
     public Statement getStatement() throws SQLException {
         Connection con = DriverManager.getConnection("");
         return con.createStatement();

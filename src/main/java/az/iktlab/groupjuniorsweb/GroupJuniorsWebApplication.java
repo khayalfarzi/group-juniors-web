@@ -13,7 +13,7 @@ public class GroupJuniorsWebApplication {
         SpringApplication.run(GroupJuniorsWebApplication.class, args);
     }
 
-    @PostConstruct
+//    @PostConstruct
     public static void postCons() {
         System.out.println("Post constructor running");
     }
