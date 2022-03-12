@@ -11,7 +11,7 @@ public class Main {
     @Autowired
     private HumanController controller;
 
-    @PostConstruct
+    //    @PostConstruct
     public void load() {
         controller.fooT();
     }

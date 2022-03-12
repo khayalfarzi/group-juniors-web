@@ -3,19 +3,21 @@ package az.iktlab.groupjuniorsweb.util.prototype;
 public class Main {
     public static void main(String[] args) {
 
-        Person personOne = Person.builder().id(1)
-                .url("jdbc:postgresql://localhost:5432/postgres")
-                .username("root")
-                .password("123456")
-                .port(5432)
-                .build();
-        System.out.println(personOne);
+        Connector connectorOne = new Connector();
+        connectorOne.setId(1);
+        connectorOne.setPort(5432);
+        connectorOne.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        connectorOne.setPassword("123456");
+        connectorOne.setUsername("root");
 
-        Person personTwo = personOne.clone();
-        personTwo.setId(2);
-        personTwo.setUrl("jdbc:mysql://localhost:3306/mysql");
-        personTwo.setPort(3306);
-        System.out.println(personTwo);
+        System.out.println(connectorOne);
 
+        Connector connectorTwo = connectorOne.clone();
+        connectorTwo.setId(2);
+        connectorTwo.setPort(3306);
+        connectorTwo.setUrl("jdbc:mysql://localhost:3306/mysql");
+        System.out.println(connectorTwo);
+
+        System.out.println(connectorOne);
     }
 }

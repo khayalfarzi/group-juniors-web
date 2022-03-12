@@ -1,6 +1,7 @@
 package az.iktlab.groupjuniorsweb.util.abstract_factory;
 
 public class CarFactory extends AbstractFactory {
+
     @Override
     public Car getCar(String carType) {
         if (carType.equalsIgnoreCase("BMW"))

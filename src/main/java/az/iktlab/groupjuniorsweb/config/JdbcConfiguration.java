@@ -12,10 +12,10 @@ import java.sql.Statement;
 @Configuration
 public class JdbcConfiguration {
 
-    @Bean
-//    @Scope(value = "request")
-    public Statement getStatement() throws SQLException {
-        Connection con = DriverManager.getConnection("");
-        return con.createStatement();
-    }
+//    @Bean
+////    @Scope(value = "request")
+//    public Statement getStatement() throws SQLException {
+//        Connection con = DriverManager.getConnection("");
+//        return con.createStatement();
+//    }
 }

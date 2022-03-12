@@ -5,15 +5,13 @@ public class Main {
     public static void main(String[] args) {
         AbstractFactory carFactory = FactoryProducer.getFactory();
 
-        Car bmw =  carFactory.getCar("BMW");
+        Car bmw = carFactory.getCar("BMW");
         bmw.create();
 
         Car hyundai = carFactory.getCar("HYUNDAI");
-        hyundai.create();;
+        hyundai.create();
 
         Car lada = carFactory.getCar("LADA");
         lada.create();
-
-
     }
 }

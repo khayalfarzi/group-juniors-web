@@ -4,11 +4,12 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Person implements Cloneable{
+public class Connector implements Cloneable {
+
     int id;
     String url;
     String username;
@@ -16,10 +17,10 @@ public class Person implements Cloneable{
     int port;
 
     @Override
-    public Person clone() {
+    public Connector clone() {
         try {
             // TODO: copy mutable state here, so the clone can't change the internals of the original
-            return (Person) super.clone();
+            return (Connector) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
         }
