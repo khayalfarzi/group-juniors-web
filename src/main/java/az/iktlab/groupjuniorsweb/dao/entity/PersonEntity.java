@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,7 +27,7 @@ public class PersonEntity {
     @Column(name = "person_name",
             columnDefinition = "varchar default 'UNDEFINED'",
             length = 32,
-//            nullable = false,
+            nullable = false,
             unique = true)
     private String name;
 
@@ -41,10 +42,23 @@ public class PersonEntity {
     private Gender gender;
 
     @Column(name = "is_active",
-            columnDefinition = "Boolean default true"
-//            nullable = false
-    )
-    private Boolean isActive;
+            columnDefinition = "Boolean default true")
+    private Boolean isActive = true;
+
+    @OneToOne(fetch = FetchType.LAZY,
+            targetEntity = UserEntity.class,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserEntity user;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            targetEntity = ImageEntity.class,
+            cascade = CascadeType.ALL)
+    @JoinTable(name = "person_images", schema = "sc_juniors",
+            joinColumns = @JoinColumn(name = "person_id"),
+            inverseJoinColumns = @JoinColumn(name = "image_id",
+                    referencedColumnName = "id"))
+    private List<ImageEntity> images;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false)

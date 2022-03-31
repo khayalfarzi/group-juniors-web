@@ -27,7 +27,7 @@ public class GroupJuniorsWebApplication {
         PersonEntity person = PersonEntity.builder()
                 .age((byte) 23)
                 .gender(Gender.MALE)
-//                .name("Name1")
+                .name("Name1")
                 .surname("Namezade")
                 .build();
 
