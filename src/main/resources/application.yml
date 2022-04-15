@@ -10,5 +10,10 @@ spring:
     password: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
+
+juniors:
+  app:
+    secret-key: bezKoderSecretKey
+    expiration-ms: 86400000

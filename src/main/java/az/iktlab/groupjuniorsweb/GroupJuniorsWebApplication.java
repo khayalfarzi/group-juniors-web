@@ -22,7 +22,7 @@ public class GroupJuniorsWebApplication {
         SpringApplication.run(GroupJuniorsWebApplication.class, args);
     }
 
-    @PostConstruct
+//    @PostConstruct
     public void postCons() {
         PersonEntity person = PersonEntity.builder()
                 .age((byte) 23)
