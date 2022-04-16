@@ -1,5 +1,6 @@
 package az.iktlab.groupjuniorsweb.config;
 
+import az.iktlab.groupjuniorsweb.security.AuthEntryPointJwt;
 import az.iktlab.groupjuniorsweb.security.AuthTokenFilter;
 import az.iktlab.groupjuniorsweb.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
